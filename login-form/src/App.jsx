@@ -26,30 +26,30 @@ export default class App extends React.Component{
     }
     
     handleSubmitBtnClick=(e)=>{
-        
-        const userInfo = {
-            username: this.state.username,
-            password: this.state.password
+        const normalize = this.state.username !== '' && this.state.password !== '';
+        if(normalize){
+            const userInfo = {
+                username: this.state.username,
+                password: this.state.password
+            }
+            this.state.username = '';
+            this.state.password = ''
+            addItemToLocalStorage("userInfo", userInfo)
         }
-        this.state.username = '';
-        this.state.password = ''
-        addItemToLocalStorage("userInfo", userInfo)
-        console.log(userInfo)
+
+        return;
     }
       
     render(){
         return(
+            <div>
+            <h1>Welcome Back</h1>
             <form>
-                <label style={{display: 'block'}}>
-                    Username:
-                </label>
                 <Input type='text' value={this.state.username} name='uname' text='Enter Username' minLength='5' maxLength='15' onChange={this.handleUnameInput}/>
-                <label style={{display: 'block'}}>
-                    Password:
-                </label>
                 <Input type='password' value={this.state.password} name='psw' text='Enter Password' minLength='5' maxLength='15' onChange={this.handlePassInput}/>
                 <Button type='submit' text='Log In' onClick={this.handleSubmitBtnClick}/>
             </form>
+            </div>
         )
     }
 }
