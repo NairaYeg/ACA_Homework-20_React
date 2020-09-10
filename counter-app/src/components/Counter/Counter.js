@@ -1,29 +1,61 @@
 import React from 'react';
 import Button from '../Button/Button';
+import Input from '../Input/Input'
 
 class Counter extends React.Component {
     state = {
         count: 0, 
-        addBy: 1
+        addBy: 1,
+        minValue: 0, 
+        maxValue: 10
     };
 
     handleInc=()=>{
-        this.setState({
-            count: this.state.count + this.state.addBy
-        })
+        if(this.state.count < this.state.maxValue){
+            this.setState(({ count, addBy }) => ({
+                count: count + addBy
+              }));
+        }
+        return ;
     }
     
     handleDec=()=>{
-        this.setState({
-            count: this.state.count-this.state.addBy
-        })
+        if(this.state.count > this.state.minValue){
+            this.setState(({ count, addBy }) => ({
+                count: count - addBy
+              }));
+        }
+
+        return ;
     }
     
     handleDelete=()=>{
         this.setState({
-            count: 0
+            count: 0,
+            addBy: 1,
+            minValue: 0, 
+            maxValue: 10
         })
     }
+    
+    handleMaxValueInput=(e)=>{
+     const isValide = !Number.isNaN(Number(e.target.value));
+     if(isValide){
+         this.setState({
+             maxValue: e.target.value
+         })
+     }
+    }
+
+    handleMinValueInput=(e)=>{
+        const isValide = !Number.isNaN(Number(e.target.value));
+        if(isValide){
+            this.setState({
+                minValue: e.target.value
+            })
+        }
+       }
+   
 
     handleAddBy = (e) => {
         const normalizedValue = Number(e.target.value);
@@ -41,7 +73,9 @@ class Counter extends React.Component {
         return (
             <div>
                 <p>{this.state.count}</p>
-                <input onChange={this.handleAddBy} placeholder="Add by..." />
+                <Input onChange={this.handleAddBy} type='number' text="Add by..." />
+                <Input onChange={this.handleMaxValueInput} type='number' text="Maximal value" />
+                <Input onChange={this.handleMinValueInput} type='number' text="Minimal value" />
                 <Button text='increment' onClick={this.handleInc} />
                 <Button text='decrement' onClick={this.handleDec} />
                 <Button text='Delete' onClick={this.handleDelete}/>
