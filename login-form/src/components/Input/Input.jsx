@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import style from './Input.module.css'
 
 export default function Input({type, value, name, text, onChange, minLength, maxLength}) {
