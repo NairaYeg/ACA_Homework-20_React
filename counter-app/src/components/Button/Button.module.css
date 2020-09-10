@@ -1,0 +1,18 @@
+
+.button {
+    padding: 7px;
+  
+    border: 0;
+    background-color: #CCCCCC;
+    color: black;
+  }
+  
+  .button:hover {
+    color: #ccc;
+    background: black;
+    cursor: pointer;
+  }
+  
+  .rounded {
+    border-radius: 50%;
+  }
