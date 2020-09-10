@@ -1,0 +1,9 @@
+.container {
+    text-align: center;
+}
+
+.login-form {
+    display: grid;
+    grid-template-rows: 3 1fr;
+    margin-left: 585px;
+}

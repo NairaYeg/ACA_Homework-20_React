@@ -2,6 +2,7 @@ import React from 'react';
 import Input from './components/Input/Input';
 import {addItemToLocalStorage} from './helpers/localStorage';
 import Button from './components/Button/Button'
+import style from './App.css'
 
 export default class App extends React.Component{
     constructor(props){
@@ -42,9 +43,9 @@ export default class App extends React.Component{
       
     render(){
         return(
-            <div>
+            <div className='container'>
             <h1>Welcome Back</h1>
-            <form>
+            <form className='login-form'>
                 <Input type='text' value={this.state.username} name='uname' text='Enter Username' minLength='5' maxLength='15' onChange={this.handleUnameInput}/>
                 <Input type='password' value={this.state.password} name='psw' text='Enter Password' minLength='5' maxLength='15' onChange={this.handlePassInput}/>
                 <Button type='submit' text='Log In' onClick={this.handleSubmitBtnClick}/>
