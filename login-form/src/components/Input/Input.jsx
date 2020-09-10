@@ -13,7 +13,6 @@ export default function Input({type, value, name, text, onChange, minLength, max
         minLength={minLength}
         maxLength={maxLength}
         required
-        onRateChange={onChange}
       />
     );
   }
