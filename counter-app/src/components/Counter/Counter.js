@@ -7,7 +7,7 @@ class Counter extends React.Component {
         count: 0, 
         addBy: 1,
         minValue: 0, 
-        maxValue: 10
+        maxValue: 100
     };
 
     handleInc=()=>{
@@ -40,6 +40,7 @@ class Counter extends React.Component {
     
     handleMaxValueInput=(e)=>{
      const isValide = !Number.isNaN(Number(e.target.value));
+
      if(isValide){
          this.setState({
              maxValue: e.target.value
@@ -49,6 +50,7 @@ class Counter extends React.Component {
 
     handleMinValueInput=(e)=>{
         const isValide = !Number.isNaN(Number(e.target.value));
+
         if(isValide){
             this.setState({
                 minValue: e.target.value
@@ -73,7 +75,7 @@ class Counter extends React.Component {
         return (
             <div>
                 <p>{this.state.count}</p>
-                <Input onChange={this.handleAddBy} type='number' text="Add by..." />
+                <Input onChange={this.handleAddBy} type='number' text="Add by..."/>
                 <Input onChange={this.handleMaxValueInput} type='number' text="Maximal value" />
                 <Input onChange={this.handleMinValueInput} type='number' text="Minimal value" />
                 <Button text='increment' onClick={this.handleInc} />
