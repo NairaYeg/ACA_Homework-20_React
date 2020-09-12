@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import Input from '../Input/Input'
+import { addItemToLocalStorage } from '../../helpers/localStorage'
 
 class Counter extends React.Component {
     state = {
@@ -42,6 +43,7 @@ class Counter extends React.Component {
      const isValide = !Number.isNaN(Number(e.target.value));
 
      if(isValide){
+         addItemToLocalStorage('maxValue', e.target.value)
          this.setState({
              maxValue: e.target.value
          })
@@ -52,6 +54,7 @@ class Counter extends React.Component {
         const isValide = !Number.isNaN(Number(e.target.value));
 
         if(isValide){
+            addItemToLocalStorage('minValue', e.target.value)
             this.setState({
                 minValue: e.target.value
             })
@@ -75,9 +78,9 @@ class Counter extends React.Component {
         return (
             <div>
                 <p>{this.state.count}</p>
-                <Input onChange={this.handleAddBy} type='number' text="Add by..."/>
-                <Input onChange={this.handleMaxValueInput} type='number' text="Maximal value" />
-                <Input onChange={this.handleMinValueInput} type='number' text="Minimal value" />
+                <Input onChange={this.handleAddBy} type='number' text="Add by..." />
+                <Input onChange={this.handleMaxValueInput} type='number' text='Maximal' />
+                <Input onChange={this.handleMinValueInput} type='number' text='Minimal'/>
                 <Button text='increment' onClick={this.handleInc} />
                 <Button text='decrement' onClick={this.handleDec} />
                 <Button text='Delete' onClick={this.handleDelete}/>
