@@ -78,9 +78,9 @@ class Counter extends React.Component {
         return (
             <div>
                 <p>{this.state.count}</p>
-                <Input onChange={this.handleAddBy} type='number' text="Add by..." />
-                <Input onChange={this.handleMaxValueInput} type='number' text='Maximal' />
-                <Input onChange={this.handleMinValueInput} type='number' text='Minimal'/>
+                <Input onChange={this.handleAddBy} type='number' text="Add by..." value={this.addBy}/>
+                <Input onChange={this.handleMaxValueInput} type='number' text='Maximal' value={this.maxValue} />
+                <Input onChange={this.handleMinValueInput} type='number' text='Minimal' value={this.minValue}/>
                 <Button text='increment' onClick={this.handleInc} />
                 <Button text='decrement' onClick={this.handleDec} />
                 <Button text='Delete' onClick={this.handleDelete}/>
